@@ -1,0 +1,525 @@
+body {
+  width: 340px;
+  min-height: 520px;
+  max-height: 520px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #F7F7F7;
+  margin: 0;
+  padding: 0;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  overflow-y: auto;
+}
+#page-tour, #page-view {
+  width: 100%;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  align-items: center;
+  background: #0F161B;
+  color: #F7F7F7;
+  padding: 16px 20px 12px 20px;
+  border-radius: 18px 18px 0 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(15,22,27,0.12);
+}
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-right: 12px;
+  background: #fff;
+  border: 2px solid #46263E;
+}
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  flex: 1;
+  letter-spacing: 0.5px;
+  color: #F7F7F7;
+}
+.settings-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.2s;
+}
+.settings-icon:hover {
+  background: #D4D6E7;
+}
+.settings-btn-img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  filter: invert(1) grayscale(1) brightness(0.7);
+}
+.view-search-bar {
+  margin-top: 8px;
+}
+.view-search-btn {
+  background: #2563a6;
+  border-radius: 0 8px 8px 0;
+  border: none;
+  width: 44px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -1px;
+  transition: background 0.2s;
+}
+.view-search-btn:hover {
+  background: #17406a;
+}
+.view-search-btn .search-btn-img {
+  filter: invert(1);
+}
+.tours-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.tours-table th, .tours-table td {
+  padding: 10px 12px;
+  text-align: left;
+}
+.tours-table th {
+  background: #D4D6E7;
+  color: #0F161B;
+  font-weight: 600;
+  border-bottom: 1px solid #D4D6E7;
+}
+.tours-table td {
+  border-bottom: 1px solid #ECECEC;
+  color: #46263E;
+}
+.tours-table tr:last-child td {
+  border-bottom: none;
+}
+.tabs {
+  display: flex;
+  align-items: center;
+  background: #ECECEC;
+  border-bottom: 1px solid #B0B0B0;
+  padding: 0;
+  position: relative;
+  border-radius: 0 0 0 0;
+  margin: 0 0 0 0;
+  margin-bottom: 2px;
+  padding-right: 44px;
+  overflow: visible;
+}
+.tab {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #ECECEC;
+  border: none;
+  padding: 14px 0 12px 0;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  border-right: 1px solid #B0B0B0;
+  color: #222;
+  border-radius: 0;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+.tab.active {
+  background: #D4D6E7;
+  color: #0F161B;
+  font-weight: 700;
+  border-bottom: 2px solid #2563a6;
+}
+.tabs-spacer { height: 0; }
+.help-icon {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #D4D6E7;
+  color: #46263E;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  border: 2px solid #F7F7F7;
+  box-shadow: 0 1px 2px rgba(15,22,27,0.06);
+  z-index: 2;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 2px;
+  padding: 0;
+  outline: none;
+}
+.help-icon:active, .help-icon:focus {
+  background: #46263E;
+  color: #F7F7F7;
+  border-color: #D4D6E7;
+}
+.section {
+  margin: 22px 20px 0 20px;
+}
+.section-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 15px;
+  color: #46263E;
+}
+.section-content {
+  background: #D4D6E7;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #0F161B;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-top: 4px;
+  gap: 0;
+}
+.search-bar input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #46263E;
+  border-radius: 8px 0 0 8px;
+  font-size: 15px;
+  background: #fff;
+  color: #0F161B;
+  outline: none;
+  transition: border 0.2s;
+}
+.search-bar input:focus {
+  border: 1.5px solid #46263E;
+}
+.search-btn {
+  width: 44px;
+  height: 40px;
+  background: #46263E;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-left: -1px;
+  box-shadow: none;
+  padding: 0;
+}
+.search-btn:hover {
+  background: #0F161B;
+}
+.search-btn-img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  filter: invert(1) grayscale(1) brightness(0.7);
+}
+.dropdown {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 9px;
+  border: 1px solid #46263E;
+  font-size: 15px;
+  margin-top: 4px;
+  background: #fff;
+  color: #0F161B;
+}
+.record-btn {
+  width: calc(100% - 40px);
+  margin: 28px 20px 20px 20px;
+  background: #46263E;
+  color: #F7F7F7;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 0;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15,22,27,0.06);
+  letter-spacing: 0.5px;
+  transition: background 0.2s;
+}
+.record-btn:hover {
+  background: #D4D6E7;
+  color: #46263E;
+}
+.record-btn.recording {
+  background-color: #ff4444;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.search-icon-img { display: none; }
+.observer-section {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 32px;
+}
+.observer-instructions {
+  color: #c0392b;
+  font-size: 15px;
+  margin-bottom: 18px;
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.observer-btn {
+  background: #2563a6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 0 18px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.observer-btn:hover {
+  background: #17406a;
+}
+.observer-fields {
+  font-size: 15px;
+  color: #222;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+.observer-dropdown {
+  margin-left: 8px;
+  padding: 4px 12px;
+  font-size: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+}
+
+/* General Button Styling */
+button {
+    border: none;
+    color: white;
+    padding: 12px 20px; /* Increased padding for height */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; /* Consistent font size */
+    margin: 5px 0; /* Consistent vertical margin */
+    cursor: pointer;
+    border-radius: 8px; /* Slightly more rounded corners */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Make buttons full width by default */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+    font-weight: 600; /* Make text bold */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+button:hover {
+    opacity: 0.9; /* Slightly dim on hover */
+}
+
+button:active {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Deeper shadow on click */
+    transform: translateY(1px); /* Press down effect */
+}
+
+/* Specific Button Styles */
+.record-btn {
+    background-color: #6200EE; /* Deep Purple for Record */
+    margin-top: 15px; /* More space above record button */
+}
+
+.record-btn:hover {
+    background-color: #3700B3; /* Darker purple on hover */
+}
+
+.record-btn.recording {
+    background-color: #D50000; /* Bright Red for Stop Recording */
+    animation: pulse 1.5s infinite;
+}
+
+.record-btn.recording:hover {
+     background-color: #B00020; /* Darker red on hover */
+}
+
+.pause-btn {
+    background-color: #03DAC6; /* Teal for Pause */
+    color: #000; /* Dark text for contrast */
+}
+
+.pause-btn:hover {
+     background-color: #018786; /* Darker teal on hover */
+}
+
+.pause-btn.paused {
+    background-color: #FFD600; /* Amber for Resumed */
+    color: #000; /* Dark text for contrast */
+}
+
+.pause-btn.paused:hover {
+     background-color: #FFAB00; /* Darker amber on hover */
+}
+
+.play-btn {
+    background-color: #03DAC6; /* Blue for Play */
+    margin-bottom: 20px; /* Add space after the button */
+}
+
+.play-btn:hover {
+    background-color: #018786; /* Darker blue on hover */
+}
+
+.search-btn, .view-search-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    margin: 0;
+    width: auto; /* Override full width for search buttons */
+    box-shadow: none; /* Remove shadow for icon buttons */
+}
+
+.search-btn:active,
+.view-search-btn:active {
+    transform: none; /* Remove press down effect for icon buttons */
+    box-shadow: none;
+}
+
+.search-btn-img {
+    width: 22px;
+    height: 22px; /* Slightly larger icon */
+    vertical-align: middle;
+}
+
+.help-icon, .settings-icon {
+    background: none;
+    border: none;
+    color: #F7F7F7;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+    margin: 0;
+    align-self: center;
+    outline: none;
+    width: auto; /* Override full width for icons */
+    box-shadow: none; /* Remove shadow for icons */
+}
+
+.help-icon:hover, .settings-icon:hover {
+    opacity: 0.8;
+}
+
+.help-icon:active,
+.settings-icon:active {
+    transform: none; /* Remove press down effect for icons */
+    box-shadow: none;
+}
+
+.settings-btn-img {
+    width: 22px;
+    height: 22px; /* Slightly larger icon */
+}
+
+
+/* Table Styling */
+.tours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tours-table th,
+.tours-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tours-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.tours-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tours-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Specific styles for action buttons in table */
+.tours-table td button {
+    width: auto; /* Override full width for small table buttons */
+    padding: 3px 8px; /* Smaller padding */
+    font-size: 12px; /* Smaller font size */
+    border-radius: 4px; /* Less rounded */
+    margin: 0 2px; /* Smaller horizontal margin */
+    box-shadow: none; /* No shadow on small buttons */
+    font-weight: normal; /* Normal font weight */
+}
+
+.tours-table td button:hover {
+    opacity: 0.9;
+}
+
+.tours-table td button:active {
+     transform: translateY(1px);
+}
+
+.tours-table td .delete-button {
+     background-color: #f44336; /* Red for delete */
+     color: white;
+}
+
+.tours-table td .delete-button:hover {
+     background-color: #d32f2f;
+}
+
+.tours-table td .edit-button {
+    background-color: #2196F3; /* Blue for edit */
+    color: white;
+}
+
+.tours-table td .edit-button:hover {
+     background-color: #1976d2;
+}
+
+.tours-table td .play-button {
+     background-color: #4CAF50; /* Green for play */
+     color: white;
+} 

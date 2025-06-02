@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QDAP</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <img src="icon16.png" class="logo" alt="QDAP Logo">
+    <span class="title">QDAP</span>
+    <span class="settings-icon" tabindex="0" aria-label="Settings" title="Settings"><img src="settings.png" alt="Settings Icon" class="settings-btn-img" /></span>
+  </div>
+  <div class="tabs">
+    <button class="tab active" id="tab-tour">Tour</button>
+    <button class="tab" id="tab-view">View</button>
+    <button class="tab" id="tab-observer">Observer</button>
+    <button class="help-icon" aria-label="Help" title="Help">?</button>
+  </div>
+  <div id="page-tour">
+    <div class="section">
+      <div class="section-title">My Current Application</div>
+      <div class="section-content">HexploraDemo</div>
+    </div>
+    <div class="section">
+      <div class="section-title">Find Helpful Resources for this Page</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Enter Keywords">
+        <button class="search-btn"><img src="search.png" alt="Search" class="search-btn-img"></button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">My Tour Groups</div>
+      <select class="dropdown">
+        <option>All Tours</option>
+      </select>
+    </div>
+    <div class="section">
+      <div class="section-title">Tour Name</div>
+      <input type="text" id="tour-name-input" placeholder="Enter tour name" style="width: calc(100% - 28px); padding: 10px 14px; border: 1px solid #46263E; border-radius: 8px; font-size: 15px; background: #fff; color: #0F161B; outline: none; transition: border 0.2s;">
+    </div>
+    <div class="section">
+      <div class="section-title">Record New Tour</div>
+      <div class="section-content" id="page-tour-content">
+    <button class="record-btn">RECORD NEW TOUR</button>
+        <button class="pause-btn" style="display: none;">Pause Recording</button>
+        <div class="recording-confirmation" style="display: none; margin-top: 15px;">
+          <div style="font-size: 15px; margin-bottom: 10px; color: #46263E;">Save this recording?</div>
+          <button class="save-tour-btn" style="background-color: #4CAF50; margin-right: 5px;">Save Tour</button>
+          <button class="discard-tour-btn" style="background-color: #f44336; margin-left: 5px;">Discard</button>
+        </div>
+        <button class="play-btn" style="margin-top: 10px; width: 100%;">PLAY RECORDED TOUR</button>
+      </div>
+    </div>
+  </div>
+  <div id="page-view" style="display:none;">
+    <div class="tabs-spacer"></div>
+    <div class="section">
+      <div class="section-title">Filter Tours by Name</div>
+      <div class="search-bar view-search-bar">
+        <input type="text" placeholder="Enter Tour Name">
+        <button class="search-btn view-search-btn"><img src="search.png" alt="Search" class="search-btn-img"></button>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Tours</div>
+      <table class="tours-table">
+        <thead>
+          <tr><th>Name</th><th>Application</th></tr>
+        </thead>
+        <tbody>
+          <!-- Table rows will go here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="page-observer" style="display:none;">
+    <div class="tabs-spacer"></div>
+    <div class="section observer-section">
+      <div class="observer-instructions">
+        When there are multiple screens under the same url, choose an element over the screen that allows differentiation when the screen changes. Choose the appropriate behaviour that the element follows that allows determine when the screen change:<br><br>
+        <b>PRESENT:</b> When the element is present on the screen, that means that the screen has changed.<br><br>
+        <b>PRESENT AND CHANGE:</b> When an element is present or its value has changed, the screen has changed.<br><br>
+        Click over the button <b>SELECT OBSERVER</b> and the element on the screen that you are going to select as an observer
+      </div>
+      <button class="observer-btn">SELECT OBSERVER</button>
+      <div class="observer-fields">
+        <div><b>Path:</b></div>
+        <div><b>Value:</b></div>
+        <div><b>Default:</b></div>
+        <div style="margin-top:8px;"><b>Behaviour:</b>
+          <select class="observer-dropdown">
+            <option>PRESENT</option>
+            <option>PRESENT AND CHANGE</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 
