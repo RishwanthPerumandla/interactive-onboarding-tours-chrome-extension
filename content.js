@@ -1,4 +1,4 @@
-console.log('✅ Content script loaded');
+// ✅ Content script loaded
 
 class TourManager {
     constructor() {
@@ -37,10 +37,7 @@ class TourManager {
     startRecording() {
         this.isRecording = true;
         this.tourSteps = [];
-        chrome.storage.local.set({
-            recordingState: true,
-            recordedSteps: []
-        });
+        chrome.storage.local.set({ recordingState: true, recordedSteps: [] });
         this._showRecordingIndicator();
         console.log('🔴 Recording started');
         return { status: 'Recording started' };
@@ -54,7 +51,7 @@ class TourManager {
 
         chrome.storage.local.set({
             recordingState: false,
-            recordedSteps: recordedSteps,
+            recordedSteps,
             recordedTourMeta: { tourName, appName }
         }, () => {
             console.log('🛑 Recording stopped. Steps:', recordedSteps);
@@ -67,6 +64,7 @@ class TourManager {
     _addClickListeners() {
         document.addEventListener('click', (event) => {
             if (!this.isRecording) return;
+
             const el = event.target;
             const selector = this._getSelector(el);
             if (!selector) return;
@@ -86,7 +84,7 @@ class TourManager {
                 selector,
                 action: 'click',
                 tooltip,
-                url: window.location.href
+                url: href || window.location.href
             };
 
             this.tourSteps.push(step);
@@ -95,9 +93,16 @@ class TourManager {
             });
 
             if (shouldNavigate && href) {
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 300);
+                chrome.storage.local.get(['recordedTourMeta'], (res) => {
+                    chrome.storage.local.set({
+                        resumeReplay: {
+                            tourName: res?.recordedTourMeta?.tourName || '',
+                            stepIndex: this.tourSteps.length
+                        }
+                    }, () => {
+                        location.assign(href);
+                    });
+                });
             }
         }, true);
     }
@@ -160,6 +165,7 @@ class TourManager {
     _showStepWithControls(steps, stepIndex, tourName) {
         if (stepIndex >= steps.length) {
             console.log('✅ Tour completed.');
+            chrome.storage.local.remove('resumeReplay');
             return;
         }
 
@@ -169,7 +175,7 @@ class TourManager {
         if (norm(step.url) !== norm(window.location.href)) {
             chrome.storage.local.set(
                 { resumeReplay: { tourName, stepIndex } },
-                () => window.location.href = step.url
+                () => location.assign(step.url)
             );
             return;
         }
@@ -238,6 +244,9 @@ class TourManager {
                 clearUI();
                 if (stepIndex < steps.length - 1) {
                     this._showStepWithControls(steps, stepIndex + 1, tourName);
+                } else {
+                    console.log('✅ Tour ended at last step.');
+                    chrome.storage.local.remove('resumeReplay');
                 }
             }, { once: true });
         });
