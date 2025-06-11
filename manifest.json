@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Digital Adoption Platform",
+  "name": "Onboarding Tour Extension",
   "version": "1.0",
   "description": "Create and replay guided tours on any website",
   "action": {
